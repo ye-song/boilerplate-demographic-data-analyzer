@@ -59,7 +59,7 @@ def calculate_demographic_data(print_data=True):
 
     # What country has the highest percentage of people that earn >50K?
 
-    country = df.groupby('native-country')['native-country'].count()
+    country = df.groupby(['native-country'])['native-country'].count()
     country_pop = pd.DataFrame(country, index = df['native-country'].unique())
     country_pop.rename(columns={'native-country': 'population'}, inplace=True)
     country_pop['wealthy'] = df.loc[df['salary']=='>50K'].groupby(['native-country'])['native-country'].count()
